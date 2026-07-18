@@ -1,0 +1,148 @@
+# =====================================
+# Python
+# =====================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# =====================================
+# Environment Variables
+# =====================================
+.env
+.env.*
+!.env.example
+
+# =====================================
+# IDE
+# =====================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# =====================================
+# Logs
+# =====================================
+*.log
+logs/
+
+# =====================================
+# Testing
+# =====================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# =====================================
+# Jupyter
+# =====================================
+.ipynb_checkpoints/
+
+# =====================================
+# Type Checkers
+# =====================================
+.mypy_cache/
+.pyre/
+.pytype/
+
+# =====================================
+# Node / React / Vite
+# =====================================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+
+# =====================================
+# MLflow
+# =====================================
+mlruns/
+mlflow.db
+
+# =====================================
+# Model Artifacts
+# =====================================
+models/
+artifacts/
+
+# If you want to keep the folders, uncomment below
+#!models/.gitkeep
+#!artifacts/.gitkeep
+
+# =====================================
+# Dataset
+# =====================================
+data/raw/
+data/processed/
+data/interim/
+*.csv
+*.parquet
+*.feather
+*.h5
+
+# =====================================
+# FAISS / Embeddings / Pickles
+# =====================================
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.index
+
+# =====================================
+# OS Files
+# =====================================
+.DS_Store
+Thumbs.db
+
+# =====================================
+# Docker
+# =====================================
+*.pid
+docker-compose.override.yml
+
+# =====================================
+# Temporary Files
+# =====================================
+tmp/
+temp/
+.cache/
+
+# =====================================
+# Secrets
+# =====================================
+*.pem
+*.key
+*.crt
+
+# =====================================
+# Keep Empty Directories
+# =====================================
+!.gitkeep

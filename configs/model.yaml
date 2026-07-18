@@ -1,0 +1,15 @@
+content:
+  text_model_name: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  text_weight: 0.2
+  audio_weight: 0.8
+  top_k: 10
+
+collaborative:
+  factors: 64
+  regularization: 0.01
+  iterations: 20
+  alpha: 40.0
+  top_k: 10
+
+hybrid:
+  content_weight: 0.5

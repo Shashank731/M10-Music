@@ -1,0 +1,2 @@
+database:
+  url: sqlite:///artifacts/music_recommendation.db
