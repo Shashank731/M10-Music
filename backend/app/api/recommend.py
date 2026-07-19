@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Query, Request, Depends, status
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 
-from backend.app.schemas import RecommendationResponse
 from backend.app.auth import get_current_user
+from backend.app.schemas import RecommendationResponse
 
 router = APIRouter(prefix="/recommend", tags=["recommendations"])
 

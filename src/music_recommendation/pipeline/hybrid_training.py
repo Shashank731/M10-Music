@@ -15,7 +15,11 @@ class HybridTrainingPipeline:
 
     def run(self) -> dict[str, float]:
         """Return the configured hybrid weights."""
-        return {"content_weight": float(self.config["model"]["hybrid"]["content_weight"])}
+        return {
+            "content_weight": float(
+                self.config["model"]["hybrid"]["content_weight"]
+            )
+        }
 
 
 if __name__ == "__main__":

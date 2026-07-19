@@ -46,7 +46,10 @@ class ContentFeatureEngineer:
 
     def __init__(
         self,
-        text_model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        text_model_name: str = (
+            "sentence-transformers/"
+            "paraphrase-multilingual-MiniLM-L12-v2"
+        ),
         text_weight: float = 0.2,
         audio_weight: float = 0.8,
         fallback_text_features: int = 384,
@@ -105,7 +108,10 @@ class ContentFeatureEngineer:
         )
         audio_features = self.audio_transformer.fit_transform(audio)
         audio_features = normalize(audio_features, norm="l2")
-        text_embeddings = normalize(self._text_embeddings(self._song_text(songs)), norm="l2")
+        text_embeddings = normalize(
+            self._text_embeddings(self._song_text(songs)),
+            norm="l2",
+        )
         embeddings = np.concatenate(
             [text_embeddings * self.text_weight, audio_features * self.audio_weight],
             axis=1,

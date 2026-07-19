@@ -33,7 +33,7 @@ class CollaborativeRecommender:
             self.interaction_matrix.matrix.sum(axis=0)
         ).ravel()
 
-    def fit(self) -> "CollaborativeRecommender":
+    def fit(self) -> CollaborativeRecommender:
         """Fit ALS when available; otherwise keep popularity fallback."""
         if AlternatingLeastSquares is None:
             return self

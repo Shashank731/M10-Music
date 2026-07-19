@@ -5,23 +5,30 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Support both execution contexts:
-# - when the project root is on PYTHONPATH (e.g. run from project root): use absolute imports
-# - when running inside backend/app or as a module, fall back to relative imports
+"""
+Support both execution contexts:
+
+- When the project root is on PYTHONPATH
+  (for example, run from the project root),
+  use absolute imports.
+
+- When running inside backend/app or as a module,
+  fall back to relative imports.
+"""
 try:
     # Absolute imports (works when project root is the working directory)
+    from backend.app import auth
     from backend.app.api import recommend, search, song
     from backend.app.config import get_settings
     from backend.app.services.collaborative_service import CollaborativeService
     from backend.app.services.content_service import ContentService
-    from backend.app import auth
 except Exception:
     # Relative imports (works when running as a module from backend/app)
+    from . import auth
     from .api import recommend, search, song
     from .config import get_settings
     from .services.collaborative_service import CollaborativeService
     from .services.content_service import ContentService
-    from . import auth
 
 
 def create_app() -> FastAPI:

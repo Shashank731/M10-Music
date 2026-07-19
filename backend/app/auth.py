@@ -23,7 +23,6 @@ from pydantic import BaseModel
 
 from backend.app.config import get_settings
 
-
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 USERS_PATH = Path(__file__).resolve().parent / "users.json"
@@ -61,15 +60,24 @@ def decode_jwt(token: str, secret: str) -> dict[str, Any]:
     try:
         header_b, payload_b, signature = token.split(".")
     except ValueError as err:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token") from err
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token",
+            ) from err
     signing_input = f"{header_b}.{payload_b}".encode()
     expected_sig = _sign(signing_input, secret)
     if not hmac.compare_digest(expected_sig, signature):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token signature")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token signature", 
+            )
     payload_json = _b64url_decode(payload_b)
     data = json.loads(payload_json)
     if data.get("exp", 0) < int(time.time()):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token expired",
+        )
     return data
 
 
@@ -134,7 +142,6 @@ def login(payload: LoginRequest):
 
 
 def get_current_user(request: Request) -> str:
-    """Extract and validate bearer token from Authorization header and return subject (email)."""
     auth = request.headers.get("authorization")
     if not auth or not auth.lower().startswith("bearer "):
         raise HTTPException(status_code=401, detail="Missing authorization")

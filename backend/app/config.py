@@ -27,7 +27,16 @@ def get_settings() -> Settings:
     root = project_root()
     config_path = Path(os.getenv("APP_CONFIG", root / "configs" / "config.yaml"))
     config: dict[str, Any] = load_yaml(config_path)
-    jwt_secret = os.getenv("APP_SECRET", config.get("backend", {}).get("jwt_secret", "dev-secret"))
+    jwt_secret = os.getenv(
+        "APP_SECRET",
+        config.get(
+            "backend",
+            {},
+        ).get(
+            "jwt_secret",
+            "dev-secret",
+        ),
+    )
     return Settings(
         config_path=config_path,
         dataset_dir=root / config["data"]["dataset_dir"],

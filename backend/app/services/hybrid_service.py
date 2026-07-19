@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from music_recommendation.recommender.hybrid import HybridRecommender
-
 from backend.app.services.collaborative_service import CollaborativeService
 from backend.app.services.content_service import ContentService
+from music_recommendation.recommender.hybrid import HybridRecommender
 
 
 class HybridService:

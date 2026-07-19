@@ -67,7 +67,7 @@ class FaissVectorStore:
             scores, indices = self.index.search(query_vector, limit)
             return [
                 (self.ids[int(idx)], float(score))
-                for idx, score in zip(indices[0], scores[0])
+                for idx, score in zip(indices[0], scores[0], strict=False)
                 if int(idx) >= 0
             ]
 
