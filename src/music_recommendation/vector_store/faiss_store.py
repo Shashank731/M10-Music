@@ -86,7 +86,7 @@ class FaissVectorStore:
         faiss.write_index(self.index, str(output_path))
 
     @classmethod
-    def load(cls, index_path: str | Path, ids: list[str]) -> "FaissVectorStore":
+    def load(cls, index_path: str | Path, ids: list[str]) -> FaissVectorStore:
         """Load a FAISS index from disk."""
         store = cls()
         store.ids = list(ids)
