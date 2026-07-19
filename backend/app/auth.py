@@ -15,11 +15,10 @@ import hmac
 import json
 import os
 import time
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, HTTPException, Request, status
 from pydantic import BaseModel
 
 from backend.app.config import get_settings
@@ -61,8 +60,8 @@ def encode_jwt(payload: dict[str, Any], secret: str, exp: int | None = None) -> 
 def decode_jwt(token: str, secret: str) -> dict[str, Any]:
     try:
         header_b, payload_b, signature = token.split(".")
-    except ValueError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    except ValueError as err:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token") from err
     signing_input = f"{header_b}.{payload_b}".encode()
     expected_sig = _sign(signing_input, secret)
     if not hmac.compare_digest(expected_sig, signature):
